@@ -1,4 +1,6 @@
-namespace CoverAll_API.A_UI.ViewModel
+using System.Collections.Generic;
+
+namespace CoverAll_API.C_DAL.Model.Cliente
 {
     public class Pedido
     {
@@ -13,7 +15,9 @@ namespace CoverAll_API.A_UI.ViewModel
         public string StatusPagamento { get; set; }
         public string StatusEntrega { get; set; }
 
-     
+        public ICollection<Produto> Produtos { get; set; }
+
+
 
     }
 }

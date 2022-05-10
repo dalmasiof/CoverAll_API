@@ -1,6 +1,6 @@
 using System;
 
-namespace CoverAll_API.A_UI.ViewModel
+namespace CoverAll_API.C_DAL.Model.Cliente
 {
     public class Cliente
     {
