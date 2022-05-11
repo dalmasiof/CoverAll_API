@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoverAll_API.A_UI.Config;
 using CoverAll_API.C_DAL.Config;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,7 +35,8 @@ namespace CoverAll_API
                    ctx.UseSqlite("Data Source=DataBase.db");
                }
            );
-
+           
+            DependencyInjectionConfig.DependencyInjection(services);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

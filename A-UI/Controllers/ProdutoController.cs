@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoverAll_API.B_Service;
+using CoverAll_API.C_DAL.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -11,15 +13,21 @@ namespace CoverAll_API.Controllers
     [Route("[controller]")]
     public class ProdutoController : ControllerBase
     {
-        public ProdutoController()
+
+        private readonly IProdutoService produtoService;
+
+
+        public ProdutoController(IProdutoService produtoService)
         {
+            this.produtoService = produtoService;
+
         }
 
-    
+
         [HttpGet]
         public ActionResult Get()
         {
-            return Ok("Get Produto");
+            return Ok(this.produtoService.GetList());
         }
 
         [HttpPut]
@@ -29,9 +37,13 @@ namespace CoverAll_API.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post()
+        public ActionResult Post(Produto prod)
         {
-            return Ok();
+            this.produtoService.Add(prod);
+            if(this.produtoService.SaveChanges())
+            return Ok("Gravou");
+
+            return Ok("Nao Gravou");
         }
 
         [HttpDelete]

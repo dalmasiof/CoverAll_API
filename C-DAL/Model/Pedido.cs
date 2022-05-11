@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CoverAll_API.C_DAL.Model.Cliente
+namespace CoverAll_API.C_DAL.Model
 {
     public class Pedido
     {
