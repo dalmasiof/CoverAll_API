@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CoverAll_API.B_Service;
+using AutoMapper;
+using CoverAll_API.A_UI.ViewModel;
 using CoverAll_API.C_DAL.Model;
+using CoverAll_API.B_Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -15,41 +17,59 @@ namespace CoverAll_API.Controllers
     {
 
         private readonly IProdutoService produtoService;
+        private readonly IMapper mapper;
 
 
-        public ProdutoController(IProdutoService produtoService)
+
+        public ProdutoController(IProdutoService produtoService, IMapper mapper)
         {
             this.produtoService = produtoService;
-
+            this.mapper = mapper;
         }
-
 
         [HttpGet]
         public ActionResult Get()
         {
-            return Ok(this.produtoService.GetList());
+            var ProdListBD = this.produtoService.GetList().ToList();
+
+            var ProdListVM = this.mapper.Map<List<Produto>,List<ProdutoVM>>(ProdListBD);
+            return Ok(ProdListVM);
         }
 
         [HttpPut]
-        public ActionResult Put()
+        public ActionResult Put(ProdutoVM produto)
         {
-            return Ok();
+            var ProdutoModel = this.mapper.Map<ProdutoVM,Produto>(produto);
+
+            this.produtoService.Update(ProdutoModel);
+            if (this.produtoService.SaveChanges())
+                return Ok("Alterou");
+
+            return Ok("Nao Alterou");
         }
 
         [HttpPost]
-        public ActionResult Post(Produto prod)
+        public ActionResult Post(ProdutoVM produto)
         {
-            this.produtoService.Add(prod);
-            if(this.produtoService.SaveChanges())
-            return Ok("Gravou");
+              
+            var ProdutoModel = this.mapper.Map<ProdutoVM,Produto>(produto);
+
+            this.produtoService.Add(ProdutoModel);
+            if (this.produtoService.SaveChanges())
+                return Ok("Gravou");
 
             return Ok("Nao Gravou");
         }
 
-        [HttpDelete]
-        public ActionResult Delete()
+        [HttpDelete("{Id:int}")]
+        public ActionResult Delete(int Id)
         {
-            return Ok();
+            var Produto = this.produtoService.GetList().Where(x => x.Id == Id).FirstOrDefault();
+            this.produtoService.Delete(Produto);
+            if (this.produtoService.SaveChanges())
+                return Ok("Deletou");
+
+            return Ok("Nao Deletou");
         }
     }
 }

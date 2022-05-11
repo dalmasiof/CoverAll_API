@@ -35,7 +35,9 @@ namespace CoverAll_API
                    ctx.UseSqlite("Data Source=DataBase.db");
                }
            );
-           
+            services.AddAutoMapper(typeof(Startup));
+
+
             DependencyInjectionConfig.DependencyInjection(services);
 
             services.AddControllers();

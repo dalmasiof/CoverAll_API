@@ -20,7 +20,7 @@ namespace CoverAll_API.B_Service
 
         public void Delete(Produto entity)
         {
-            throw new System.NotImplementedException();
+            repository.Delete(entity);
         }
 
         public ICollection<Produto> GetList()
@@ -35,7 +35,7 @@ namespace CoverAll_API.B_Service
 
         public void Update(Produto entity)
         {
-            throw new System.NotImplementedException();
+            repository.Update(entity);
         }
     }
 }

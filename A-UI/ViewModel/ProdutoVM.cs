@@ -8,7 +8,7 @@ namespace CoverAll_API.A_UI.ViewModel
         public string Cor  { get; set; }
         public string Tamanho { get; set; }
         public string Observacao { get; set; }
-        public string Quantidade { get; set; }
+        public int Quantidade { get; set; }
 
     }
 }

@@ -10,7 +10,7 @@ namespace CoverAll_API.C_DAL.Model
         public string Cor { get; set; }
         public string Tamanho { get; set; }
         public string Observacao { get; set; }
-        public string Quantidade { get; set; }
+        public int Quantidade { get; set; }
 
         public ICollection<Pedido> Pedidos { get; set; }
 

@@ -16,7 +16,7 @@ namespace CoverAll_API.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.9");
 
-            modelBuilder.Entity("CoverAll_API.C_DAL.Model.Cliente.Cliente", b =>
+            modelBuilder.Entity("CoverAll_API.C_DAL.Model.Cliente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -60,7 +60,7 @@ namespace CoverAll_API.Migrations
                     b.ToTable("Clientes");
                 });
 
-            modelBuilder.Entity("CoverAll_API.C_DAL.Model.Cliente.Login", b =>
+            modelBuilder.Entity("CoverAll_API.C_DAL.Model.Login", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -80,7 +80,7 @@ namespace CoverAll_API.Migrations
                     b.ToTable("Logins");
                 });
 
-            modelBuilder.Entity("CoverAll_API.C_DAL.Model.Cliente.Pedido", b =>
+            modelBuilder.Entity("CoverAll_API.C_DAL.Model.Pedido", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -118,7 +118,7 @@ namespace CoverAll_API.Migrations
                     b.ToTable("Pedidos");
                 });
 
-            modelBuilder.Entity("CoverAll_API.C_DAL.Model.Cliente.Produto", b =>
+            modelBuilder.Entity("CoverAll_API.C_DAL.Model.Produto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -136,8 +136,8 @@ namespace CoverAll_API.Migrations
                     b.Property<decimal>("Preco")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Quantidade")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Tamanho")
                         .HasColumnType("TEXT");
@@ -164,13 +164,13 @@ namespace CoverAll_API.Migrations
 
             modelBuilder.Entity("PedidoProduto", b =>
                 {
-                    b.HasOne("CoverAll_API.C_DAL.Model.Cliente.Pedido", null)
+                    b.HasOne("CoverAll_API.C_DAL.Model.Pedido", null)
                         .WithMany()
                         .HasForeignKey("PedidosId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CoverAll_API.C_DAL.Model.Cliente.Produto", null)
+                    b.HasOne("CoverAll_API.C_DAL.Model.Produto", null)
                         .WithMany()
                         .HasForeignKey("ProdutosId")
                         .OnDelete(DeleteBehavior.Cascade)

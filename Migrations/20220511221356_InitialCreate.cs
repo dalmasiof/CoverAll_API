@@ -77,7 +77,7 @@ namespace CoverAll_API.Migrations
                     Cor = table.Column<string>(type: "TEXT", nullable: true),
                     Tamanho = table.Column<string>(type: "TEXT", nullable: true),
                     Observacao = table.Column<string>(type: "TEXT", nullable: true),
-                    Quantidade = table.Column<string>(type: "TEXT", nullable: true)
+                    Quantidade = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
