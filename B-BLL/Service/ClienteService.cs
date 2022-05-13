@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using CoverAll_API.B_BLL.Interfaces;
-using CoverAll_API.C_DAL.Interface;
+using CoverAll_API.C_DAL.Interfaces;
 using CoverAll_API.C_DAL.Interfaces;
 using CoverAll_API.C_DAL.Model;
 

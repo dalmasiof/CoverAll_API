@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CoverAll_API.C_DAL.Interface
+namespace CoverAll_API.C_DAL.Interfaces
 {
     public interface IBaseRepository <T>
     {

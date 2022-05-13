@@ -1,7 +1,7 @@
 using System;
 using CoverAll_API.C_DAL.Model;
 
-namespace CoverAll_API.C_DAL.Interface
+namespace CoverAll_API.C_DAL.Interfaces
 {
     public interface IClienteRepository:IBaseRepository<Cliente>
     {

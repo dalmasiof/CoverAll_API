@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using CoverAll_API.A_UI.ViewModel;
+using CoverAll_API.B_BLL.Interfaces;
+using CoverAll_API.C_DAL.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -11,26 +15,53 @@ namespace CoverAll_API.Controllers
     [Route("[controller]")]
     public class LoginController : ControllerBase
     {
-       public LoginController(){
+        private readonly ILoginService service;
+        private readonly IMapper mapper;
+
+        public LoginController(ILoginService service, IMapper mapper)
+        {
+            this.service = service;
+            this.mapper = mapper;
         }
 
-      
-        [HttpGet]
-        public ActionResult LogIn()
+        [HttpPost("Auth")]
+        public ActionResult LogIn(LoginVM loginVM)
         {
-            return Ok("Get Login");
+            Cliente Login = this.service.LogIn(loginVM.Usuario, loginVM.Senha);
+
+            if (Login == null)
+            {
+                return Unauthorized();
+            }
+            else
+            {
+                return Ok(Login);
+            }
         }
 
         [HttpPut]
-        public ActionResult Put()
+        public ActionResult Put(LoginVM loginVM)
         {
-            return Ok();
+            var Login = this.mapper.Map<LoginVM, Login>(loginVM);
+            this.service.Update(Login);
+
+            if (this.service.SaveChanges())
+                return Ok("Alterou");
+
+            return Ok("Nao alterou");
+
         }
 
         [HttpPost]
-        public ActionResult Post()
+        public ActionResult Post(LoginVM loginVM)
         {
-            return Ok();
+            var Login = this.mapper.Map<LoginVM, Login>(loginVM);
+            this.service.Add(Login);
+
+            if (this.service.SaveChanges())
+                return Ok("Gravou");
+
+            return Ok("Nao gravou");
         }
 
         [HttpDelete]

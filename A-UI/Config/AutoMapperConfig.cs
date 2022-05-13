@@ -11,6 +11,9 @@ namespace CoverAll_API.A_UI.Config
          public AutoMapperConfig()
         {
             CreateMap<ProdutoVM,Produto>().ReverseMap();
+            CreateMap<ClienteVM,Cliente>().ReverseMap();
+            CreateMap<LoginVM,Login>().ReverseMap();
+
         }
     }
 }
