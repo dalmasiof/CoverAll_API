@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CoverAll_API.C_DAL.Config;
-using CoverAll_API.C_DAL.Interface;
+using CoverAll_API.C_DAL.Interfaces;
 using CoverAll_API.C_DAL.Model;
 
 namespace CoverAll_API.C_DAL.Repository

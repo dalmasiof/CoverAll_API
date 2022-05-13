@@ -16,7 +16,7 @@ namespace CoverAll_API.Controllers
 
       
         [HttpGet]
-        public ActionResult Get()
+        public ActionResult LogIn()
         {
             return Ok("Get Login");
         }

@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using CoverAll_API.A_UI.ViewModel;
+using CoverAll_API.B_BLL.Interfaces;
+using CoverAll_API.C_DAL.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -11,31 +15,56 @@ namespace CoverAll_API.Controllers
     [Route("[controller]")]
     public class ClienteController : ControllerBase
     {
-        public ClienteController(){
+          private readonly IClienteService clienteService;
+        private readonly IMapper mapper;
+        public ClienteController(IClienteService clienteService, IMapper mapper){
+             this.clienteService = clienteService;
+            this.mapper = mapper;
         }
 
-        [HttpGet]
+          [HttpGet]
         public ActionResult Get()
         {
-            return Ok("Get CLiente");
+            var ClienteListBD = this.clienteService.GetList().ToList();
+
+            var ClienteVM = this.mapper.Map<List<Cliente>,List<ClienteVM>>(ClienteListBD);
+            return Ok(ClienteVM);
         }
 
         [HttpPut]
-        public ActionResult Put()
+        public ActionResult Put(ClienteVM clienteVM)
         {
-            return Ok();
+            var ClienteModel = this.mapper.Map<ClienteVM,Cliente>(clienteVM);
+
+            this.clienteService.Update(ClienteModel);
+            if (this.clienteService.SaveChanges())
+                return Ok("Alterou");
+
+            return Ok("Nao Alterou");
         }
 
         [HttpPost]
-        public ActionResult Post()
+        public ActionResult Post(ClienteVM clienteVM)
         {
-            return Ok();
+              
+            var ClienteModel = this.mapper.Map<ClienteVM,Cliente>(clienteVM);
+
+            this.clienteService.Add(ClienteModel);
+            if (this.clienteService.SaveChanges())
+                return Ok("Gravou");
+
+            return Ok("Nao Gravou");
         }
 
-        [HttpDelete]
-        public ActionResult Delete()
+        [HttpDelete("{Id:int}")]
+        public ActionResult Delete(int Id)
         {
-            return Ok();
+            var Cliente = this.clienteService.GetList().Where(x => x.Id == Id).FirstOrDefault();
+            this.clienteService.Delete(Cliente);
+            if (this.clienteService.SaveChanges())
+                return Ok("Deletou");
+
+            return Ok("Nao Deletou");
         }
     }
 }

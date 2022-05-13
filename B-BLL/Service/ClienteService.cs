@@ -1,29 +1,32 @@
+using System;
 using System.Collections.Generic;
+using CoverAll_API.B_BLL.Interfaces;
+using CoverAll_API.C_DAL.Interface;
 using CoverAll_API.C_DAL.Interfaces;
 using CoverAll_API.C_DAL.Model;
 
-namespace CoverAll_API.B_Service
+namespace CoverAll_API.B_BLL.Service
 {
-    public class ProdutoService : IProdutoService
+    public class ClienteService : IClienteService
     {
-        private readonly IProdutoRepository repository;
-
-        public ProdutoService(IProdutoRepository repository)
+        private readonly IClienteRepository repository;
+        public ClienteService(IClienteRepository repository)
         {
             this.repository = repository;
 
         }
-        public void Add(Produto entity)
+
+        public void Add(Cliente entity)
         {
             repository.Add(entity);
         }
 
-        public void Delete(Produto entity)
+        public void Delete(Cliente entity)
         {
             repository.Delete(entity);
         }
 
-        public ICollection<Produto> GetList()
+        public ICollection<Cliente> GetList()
         {
             return repository.GetList();
         }
@@ -33,7 +36,7 @@ namespace CoverAll_API.B_Service
             return this.repository.SaveChanges();
         }
 
-        public void Update(Produto entity)
+        public void Update(Cliente entity)
         {
             repository.Update(entity);
         }

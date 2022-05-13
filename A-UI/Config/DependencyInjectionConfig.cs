@@ -1,6 +1,7 @@
 using System;
 using CoverAll_API.B_Service;
 using CoverAll_API.C_DAL.Interface;
+using CoverAll_API.C_DAL.Interfaces;
 using CoverAll_API.C_DAL.Repository;
 using Microsoft.Extensions.DependencyInjection;
 
