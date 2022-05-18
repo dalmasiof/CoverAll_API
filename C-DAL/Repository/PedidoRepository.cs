@@ -4,6 +4,7 @@ using System.Linq;
 using CoverAll_API.C_DAL.Config;
 using CoverAll_API.C_DAL.Interfaces;
 using CoverAll_API.C_DAL.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoverAll_API.C_DAL.Repository
 {
@@ -16,6 +17,12 @@ namespace CoverAll_API.C_DAL.Repository
         }
         public void Add(Pedido entity)
         {
+            entity.Produtos.All(x=>{
+                dbContext.Produtos.Attach(x);
+                return true;
+            });
+
+          
             dbContext.Pedidos.Add(entity);
         }
 
@@ -26,7 +33,7 @@ namespace CoverAll_API.C_DAL.Repository
 
         public ICollection<Pedido> GetList()
         {
-            return this.dbContext.Pedidos.ToList();
+            return this.dbContext.Pedidos.Include("Produtos").ToList();
         }
 
         public bool SaveChanges()

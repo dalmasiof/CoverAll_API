@@ -58,6 +58,23 @@ namespace CoverAll_API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Clientes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CEP = "05668545",
+                            CPF = "447.649.596-66",
+                            Cidade = "São Paulo",
+                            DataNascimento = new DateTime(1978, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Endereco = "Rua Pio XII",
+                            Genero = "Masculino",
+                            Nome = "Eduardo",
+                            Sobrenome = "Noah Ramos",
+                            Telefone = "88 3889-3701",
+                            UF = "CE",
+                            email = "eduardo_noah_ramos@trimempresas.com.br"
+                        });
                 });
 
             modelBuilder.Entity("CoverAll_API.C_DAL.Model.Login", b =>
@@ -78,6 +95,15 @@ namespace CoverAll_API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Logins");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IdCLiente = 1,
+                            Senha = "admin",
+                            Usuario = "admin"
+                        });
                 });
 
             modelBuilder.Entity("CoverAll_API.C_DAL.Model.Pedido", b =>
@@ -145,6 +171,38 @@ namespace CoverAll_API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Produtos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Cor = "Vermelho",
+                            Descricao = "Tecido Vermelho",
+                            Observacao = "",
+                            Preco = 45.00m,
+                            Quantidade = 10,
+                            Tamanho = "XG"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Cor = "Azul",
+                            Descricao = "Tecido Azul Escuro",
+                            Observacao = "",
+                            Preco = 55.00m,
+                            Quantidade = 20,
+                            Tamanho = "GG"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Cor = "Preto",
+                            Descricao = "Camisa manga longa",
+                            Observacao = "Desenvolvido para manter a temperatura corporal",
+                            Preco = 415.00m,
+                            Quantidade = 5,
+                            Tamanho = "XXG"
+                        });
                 });
 
             modelBuilder.Entity("PedidoProduto", b =>

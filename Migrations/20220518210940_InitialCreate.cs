@@ -108,6 +108,31 @@ namespace CoverAll_API.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Clientes",
+                columns: new[] { "Id", "CEP", "CPF", "Cidade", "DataNascimento", "Endereco", "Genero", "Nome", "Sobrenome", "Telefone", "UF", "email" },
+                values: new object[] { 1, "05668545", "447.649.596-66", "São Paulo", new DateTime(1978, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "Rua Pio XII", "Masculino", "Eduardo", "Noah Ramos", "88 3889-3701", "CE", "eduardo_noah_ramos@trimempresas.com.br" });
+
+            migrationBuilder.InsertData(
+                table: "Logins",
+                columns: new[] { "Id", "IdCLiente", "Senha", "Usuario" },
+                values: new object[] { 1, 1, "admin", "admin" });
+
+            migrationBuilder.InsertData(
+                table: "Produtos",
+                columns: new[] { "Id", "Cor", "Descricao", "Observacao", "Preco", "Quantidade", "Tamanho" },
+                values: new object[] { 1, "Vermelho", "Tecido Vermelho", "", 45.00m, 10, "XG" });
+
+            migrationBuilder.InsertData(
+                table: "Produtos",
+                columns: new[] { "Id", "Cor", "Descricao", "Observacao", "Preco", "Quantidade", "Tamanho" },
+                values: new object[] { 2, "Azul", "Tecido Azul Escuro", "", 55.00m, 20, "GG" });
+
+            migrationBuilder.InsertData(
+                table: "Produtos",
+                columns: new[] { "Id", "Cor", "Descricao", "Observacao", "Preco", "Quantidade", "Tamanho" },
+                values: new object[] { 3, "Preto", "Camisa manga longa", "Desenvolvido para manter a temperatura corporal", 415.00m, 5, "XXG" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_PedidoProduto_ProdutosId",
                 table: "PedidoProduto",
