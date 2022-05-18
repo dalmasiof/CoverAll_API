@@ -14,12 +14,13 @@ namespace CoverAll_API.A_UI.Config
         {
             //Services
             services.AddScoped<IProdutoService, ProdutoService>();
+            services.AddScoped<IPedidoService, PedidoService>();
             services.AddScoped<IClienteService, ClienteService>();
             services.AddScoped<ILoginService, LoginService>();
 
-
             //Repository
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            services.AddScoped<IPedidoRepository, PedidoRepository>();
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<ILoginRepository, LoginRepository>();
 
