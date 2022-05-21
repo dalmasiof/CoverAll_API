@@ -33,7 +33,12 @@ namespace CoverAll_API
             //add cors
             services.AddCors(c =>
               {
-                  c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+                  c.AddPolicy("AllowOrigin", options =>
+                  {
+                      options.AllowAnyOrigin();
+                      options.AllowAnyMethod();
+
+                  });
               });
 
             services.AddDbContext<DataContext>(x =>
