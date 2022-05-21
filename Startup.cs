@@ -81,6 +81,8 @@ namespace CoverAll_API
 
             app.UseRouting();
 
+            app.UseCors();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
