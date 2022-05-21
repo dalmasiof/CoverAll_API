@@ -35,9 +35,9 @@ namespace CoverAll_API
               {
                   c.AddPolicy("AllowOrigin", options =>
                   {
-                      options.AllowAnyOrigin();
-                      options.AllowAnyMethod();
-
+                      options.AllowAnyOrigin().
+                      AllowAnyMethod().
+                      AllowAnyHeader();
                   });
               });
 
