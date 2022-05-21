@@ -31,14 +31,50 @@ namespace CoverAll_API
         {
 
 
-            services.AddDbContext<DataContext>(
-               ctx =>
-               {
-                   ctx.UseSqlite("Data Source=DataBase.db");
-               }
-           );
+            //     services.AddDbContext<DataContext>(
+            //        ctx =>
+            //        {
+            //            ctx.UseSqlite("Data Source=DataBase.db");
+            //        }
+            //    );
 
-           
+            services.AddDbContext<DataContext>(x =>
+             {
+                 var local = Configuration.GetValue<string>("ASPNETCORE_ENVIRONMENT");
+                 Console.Write(local);
+                 Console.WriteLine("-------------Var-------------\n" + local);
+                 string connStr;
+                 if (local == "Development")
+                 {
+                     connStr = Configuration.GetConnectionString("sqlConnection");
+                 }
+                 else
+                 {
+                     // Use connection string provided at runtime by Heroku.
+                     connStr = Environment.GetEnvironmentVariable("CLEARDB_DATABASE_URL");
+
+                     var connUrl = connStr;
+
+                     connUrl = connUrl.Replace("mysql://", string.Empty);
+                     var userPassSide = connUrl.Split("@")[0];
+                     var hostSide = connUrl.Split("@")[1];
+
+                     var connUser = userPassSide.Split(":")[0];
+                     var connPass = userPassSide.Split(":")[1];
+                     var connHost = hostSide.Split("/")[0];
+                     var connDb = hostSide.Split("/")[1].Split("?")[0];
+
+                     connStr = $"server={connHost};Uid={connUser};Pwd={connPass};Database={connDb}";
+                 }
+
+                 Console.WriteLine("-------------Var-------------\n" + connStr);
+                 x.UseMySql(connStr, new MySqlServerVersion(new Version(5, 0, 0)));
+
+             });
+
+
+
+
             services.AddAutoMapper(typeof(Startup));
 
 
@@ -52,6 +88,7 @@ namespace CoverAll_API
 
 
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -73,7 +110,7 @@ namespace CoverAll_API
             {
                 endpoints.MapControllers();
             });
-            
+
         }
     }
 }
