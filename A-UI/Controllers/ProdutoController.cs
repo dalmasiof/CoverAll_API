@@ -8,11 +8,14 @@ using CoverAll_API.C_DAL.Model;
 using CoverAll_API.B_Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Cors;
 
 namespace CoverAll_API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [EnableCors("AllowOrigin")]
+
     public class ProdutoController : ControllerBase
     {
 
@@ -32,14 +35,14 @@ namespace CoverAll_API.Controllers
         {
             var ProdListBD = this.produtoService.GetList().ToList();
 
-            var ProdListVM = this.mapper.Map<List<Produto>,List<ProdutoVM>>(ProdListBD);
+            var ProdListVM = this.mapper.Map<List<Produto>, List<ProdutoVM>>(ProdListBD);
             return Ok(ProdListVM);
         }
 
         [HttpPut]
         public ActionResult Put(ProdutoVM produto)
         {
-            var ProdutoModel = this.mapper.Map<ProdutoVM,Produto>(produto);
+            var ProdutoModel = this.mapper.Map<ProdutoVM, Produto>(produto);
 
             this.produtoService.Update(ProdutoModel);
             if (this.produtoService.SaveChanges())
@@ -51,8 +54,8 @@ namespace CoverAll_API.Controllers
         [HttpPost]
         public ActionResult Post(ProdutoVM produto)
         {
-              
-            var ProdutoModel = this.mapper.Map<ProdutoVM,Produto>(produto);
+
+            var ProdutoModel = this.mapper.Map<ProdutoVM, Produto>(produto);
 
             this.produtoService.Add(ProdutoModel);
             if (this.produtoService.SaveChanges())
