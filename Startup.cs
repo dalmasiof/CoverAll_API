@@ -30,7 +30,7 @@ namespace CoverAll_API
         public void ConfigureServices(IServiceCollection services)
         {
 
-
+            //add cors
             services.AddCors(options =>
         {
             options.AddPolicy("AllowAll",
