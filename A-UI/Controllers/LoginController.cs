@@ -6,6 +6,7 @@ using AutoMapper;
 using CoverAll_API.A_UI.ViewModel;
 using CoverAll_API.B_BLL.Interfaces;
 using CoverAll_API.C_DAL.Model;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -13,6 +14,8 @@ namespace CoverAll_API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [EnableCors("AllowOrigin")]
+
     public class LoginController : ControllerBase
     {
         private readonly ILoginService service;
