@@ -42,32 +42,11 @@ namespace CoverAll_API
              {
                  var local = Configuration.GetValue<string>("ASPNETCORE_ENVIRONMENT");
                  Console.Write(local);
-                 Console.WriteLine("-------------Var-------------\n" + local);
+                 Console.WriteLine("-------------Var Local-------------\n" + local);
                  string connStr;
-                 if (local == "Development")
-                 {
                      connStr = Configuration.GetConnectionString("sqlConnection");
-                 }
-                 else
-                 {
-                     // Use connection string provided at runtime by Heroku.
-                     connStr = Environment.GetEnvironmentVariable("CLEARDB_DATABASE_URL");
-
-                     var connUrl = connStr;
-
-                     connUrl = connUrl.Replace("mysql://", string.Empty);
-                     var userPassSide = connUrl.Split("@")[0];
-                     var hostSide = connUrl.Split("@")[1];
-
-                     var connUser = userPassSide.Split(":")[0];
-                     var connPass = userPassSide.Split(":")[1];
-                     var connHost = hostSide.Split("/")[0];
-                     var connDb = hostSide.Split("/")[1].Split("?")[0];
-
-                     connStr = $"server={connHost};Uid={connUser};Pwd={connPass};Database={connDb}";
-                 }
-
-                 Console.WriteLine("-------------Var-------------\n" + connStr);
+            
+                 Console.WriteLine("-------------Var COnString-------------\n" + connStr);
                  x.UseMySql(connStr, new MySqlServerVersion(new Version(5, 0, 0)));
 
              });
