@@ -31,12 +31,18 @@ namespace CoverAll_API
         {
 
 
-            //     services.AddDbContext<DataContext>(
-            //        ctx =>
-            //        {
-            //            ctx.UseSqlite("Data Source=DataBase.db");
-            //        }
-            //    );
+            services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll",
+                builder =>
+                {
+                    builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials();
+                });
+        });
 
             services.AddDbContext<DataContext>(x =>
              {
@@ -44,8 +50,8 @@ namespace CoverAll_API
                  Console.Write(local);
                  Console.WriteLine("-------------Var Local-------------\n" + local);
                  string connStr;
-                     connStr = Configuration.GetConnectionString("sqlConnection");
-            
+                 connStr = Configuration.GetConnectionString("sqlConnection");
+
                  Console.WriteLine("-------------Var COnString-------------\n" + connStr);
                  x.UseMySql(connStr, new MySqlServerVersion(new Version(5, 0, 0)));
 
