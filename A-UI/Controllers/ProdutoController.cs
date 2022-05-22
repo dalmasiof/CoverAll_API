@@ -46,9 +46,9 @@ namespace CoverAll_API.Controllers
 
             this.produtoService.Update(ProdutoModel);
             if (this.produtoService.SaveChanges())
-                return Ok("Alterou");
+                return Ok();
 
-            return Ok("Nao Alterou");
+            return Ok();
         }
 
         [HttpPost]
@@ -59,9 +59,9 @@ namespace CoverAll_API.Controllers
 
             this.produtoService.Add(ProdutoModel);
             if (this.produtoService.SaveChanges())
-                return Ok("Gravou");
+                return Ok();
 
-            return Ok("Nao Gravou");
+            return Ok();
         }
 
         [HttpDelete("{Id:int}")]
@@ -70,9 +70,9 @@ namespace CoverAll_API.Controllers
             var Produto = this.produtoService.GetList().Where(x => x.Id == Id).FirstOrDefault();
             this.produtoService.Delete(Produto);
             if (this.produtoService.SaveChanges())
-                return Ok("Deletou");
+                return Ok();
 
-            return Ok("Nao Deletou");
+            return Ok();
         }
     }
 }

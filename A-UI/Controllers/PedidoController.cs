@@ -44,9 +44,9 @@ namespace CoverAll_API.Controllers
 
             this.service.Update(PedidoModel);
             if (this.service.SaveChanges())
-                return Ok("Alterou");
+                return Ok();
 
-            return Ok("Nao Alterou");
+            return Ok();
         }
 
         [HttpPost]
@@ -55,9 +55,9 @@ namespace CoverAll_API.Controllers
             var PedidoModel = this.mapper.Map<PedidoVM, Pedido>(pedidoVM);
             this.service.Add(PedidoModel);
             if (this.service.SaveChanges())
-                return Ok("Gravou");
+                return Ok();
 
-            return Ok("Nao Gravou");
+            return Ok();
         }
 
         [HttpDelete("{Id:int}")]
@@ -66,9 +66,9 @@ namespace CoverAll_API.Controllers
             var Pedido = this.service.GetList().Where(x => x.Id == Id).FirstOrDefault();
             this.service.Delete(Pedido);
             if (this.service.SaveChanges())
-                return Ok("Deletou");
+                return Ok();
 
-            return Ok("Nao Deletou");
+            return Ok();
         }
     }
 }

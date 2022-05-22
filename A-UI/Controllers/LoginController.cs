@@ -49,9 +49,9 @@ namespace CoverAll_API.Controllers
             this.service.Update(Login);
 
             if (this.service.SaveChanges())
-                return Ok("Alterou");
+                return Ok();
 
-            return Ok("Nao alterou");
+            return Ok();
 
         }
 
@@ -62,9 +62,9 @@ namespace CoverAll_API.Controllers
             this.service.Add(Login);
 
             if (this.service.SaveChanges())
-                return Ok("Gravou");
+                return Ok();
 
-            return Ok("Nao gravou");
+            return Ok();
         }
 
         [HttpDelete]

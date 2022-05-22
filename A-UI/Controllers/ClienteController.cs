@@ -42,9 +42,9 @@ namespace CoverAll_API.Controllers
 
             this.clienteService.Update(ClienteModel);
             if (this.clienteService.SaveChanges())
-                return Ok("Alterou");
+                return Ok();
 
-            return Ok("Nao Alterou");
+            return Ok();
         }
 
         [HttpPost]
@@ -55,9 +55,9 @@ namespace CoverAll_API.Controllers
 
             this.clienteService.Add(ClienteModel);
             if (this.clienteService.SaveChanges())
-                return Ok("Gravou");
+                return Ok();
 
-            return Ok("Nao Gravou");
+            return Ok();
         }
 
         [HttpDelete("{Id:int}")]
@@ -66,9 +66,9 @@ namespace CoverAll_API.Controllers
             var Cliente = this.clienteService.GetList().Where(x => x.Id == Id).FirstOrDefault();
             this.clienteService.Delete(Cliente);
             if (this.clienteService.SaveChanges())
-                return Ok("Deletou");
+                return Ok();
 
-            return Ok("Nao Deletou");
+            return Ok();
         }
     }
 }
