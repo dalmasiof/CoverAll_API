@@ -70,5 +70,14 @@ namespace CoverAll_API.Controllers
 
             return Ok();
         }
+
+        [HttpGet("{Id:int}")]
+        public ActionResult Get(int Id)
+        {
+            var Cliente = this.clienteService.GetList().Where(x => x.Id == Id).FirstOrDefault();
+            var ClienteVM = this.mapper.Map<Cliente, ClienteVM>(Cliente);
+
+            return Ok(ClienteVM);
+        }
     }
 }
