@@ -40,6 +40,7 @@ namespace CoverAll_API.B_BLL.Service
             var loginToDelete = this.repositoryLogin.GetList().Where(x=>x.IdCLiente == entity.Id).FirstOrDefault();
 
             repository.Delete(entity);
+            repository.SaveChanges();
             repositoryLogin.Delete(loginToDelete);
         }
 
