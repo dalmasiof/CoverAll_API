@@ -31,7 +31,7 @@ namespace CoverAll_API.Controllers
         {
             var ClienteListBD = this.clienteService.GetList().ToList();
 
-            var ClienteVM = this.mapper.Map<List<Cliente>, List<ClienteVM>>(ClienteListBD);
+            var ClienteVM = this.mapper.Map<List<Cliente>, List<ClienteListaVM>>(ClienteListBD);
             return Ok(ClienteVM);
         }
 
