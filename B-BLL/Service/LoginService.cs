@@ -26,7 +26,7 @@ namespace CoverAll_API.B_BLL.Service
 
         public void Delete(Login entity)
         {
-            throw new NotImplementedException();
+            this.repository.Delete(entity);
         }
 
         public ICollection<Login> GetList()

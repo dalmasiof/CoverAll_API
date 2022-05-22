@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using CoverAll_API.B_BLL.Interfaces;
 using CoverAll_API.C_DAL.Interfaces;
 using CoverAll_API.C_DAL.Interfaces;
@@ -35,7 +36,11 @@ namespace CoverAll_API.B_BLL.Service
 
         public void Delete(Cliente entity)
         {
+
+            var loginToDelete = this.repositoryLogin.GetList().Where(x=>x.IdCLiente == entity.Id).FirstOrDefault();
+
             repository.Delete(entity);
+            repositoryLogin.Delete(loginToDelete);
         }
 
         public ICollection<Cliente> GetList()
