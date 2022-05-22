@@ -21,12 +21,12 @@ namespace CoverAll_API.C_DAL.Repository
 
         public void Delete(Login entity)
         {
-            throw new NotImplementedException();
+            this.dbContext.Logins.Remove(entity);
         }
 
         public ICollection<Login> GetList()
         {
-            throw new NotImplementedException();
+            return this.dbContext.Logins.ToList();
         }
 
         public Login LogIn(string usuario, string senha)
