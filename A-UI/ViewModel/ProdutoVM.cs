@@ -10,7 +10,7 @@ namespace CoverAll_API.A_UI.ViewModel
         public string Personalizado { get; set; }
         public string Observacao { get; set; }
         public string UrlImg { get; set; }
-
+        public string Genero { get; set; }
 
     }
 }
