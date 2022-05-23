@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoverAll_API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220521012919_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220523115311_initialCreate")]
+    partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,7 +67,7 @@ namespace CoverAll_API.Migrations
                         {
                             Id = 1,
                             CEP = "05668545",
-                            CPF = "447.649.596-66",
+                            CPF = "44764959666",
                             Cidade = "São Paulo",
                             DataNascimento = new DateTime(1978, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Endereco = "Rua Pio XII",
@@ -159,14 +159,14 @@ namespace CoverAll_API.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Genero")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Observacao")
                         .HasColumnType("longtext");
 
                     b.Property<decimal>("Preco")
                         .HasColumnType("decimal(65,30)");
-
-                    b.Property<int>("Quantidade")
-                        .HasColumnType("int");
 
                     b.Property<string>("Tamanho")
                         .HasColumnType("longtext");
@@ -180,31 +180,181 @@ namespace CoverAll_API.Migrations
                         {
                             Id = 1,
                             Cor = "Vermelho",
-                            Descricao = "Tecido Vermelho",
-                            Observacao = "",
-                            Preco = 45.00m,
-                            Quantidade = 10,
-                            Tamanho = "XG"
+                            Descricao = "Camiseta vermelha",
+                            Genero = "M",
+                            Observacao = "Camiseta lisa vermelha",
+                            Preco = 45.00m
                         },
                         new
                         {
                             Id = 2,
                             Cor = "Azul",
-                            Descricao = "Tecido Azul Escuro",
-                            Observacao = "",
-                            Preco = 55.00m,
-                            Quantidade = 20,
-                            Tamanho = "GG"
+                            Descricao = "Camiseta Azul",
+                            Genero = "M",
+                            Observacao = "Camiseta lisa azul",
+                            Preco = 45.00m
                         },
                         new
                         {
                             Id = 3,
                             Cor = "Preto",
-                            Descricao = "Camisa manga longa",
-                            Observacao = "Desenvolvido para manter a temperatura corporal",
-                            Preco = 415.00m,
-                            Quantidade = 5,
-                            Tamanho = "XXG"
+                            Descricao = "Camiseta Preta",
+                            Genero = "M",
+                            Observacao = "Camiseta lisa preta",
+                            Preco = 55.00m
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Cor = "Branco",
+                            Descricao = "Camiseta Branca",
+                            Genero = "M",
+                            Observacao = "Camiseta lisa branca",
+                            Preco = 55.00m
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Cor = "Preta",
+                            Descricao = "Camiseta Preta Star wars",
+                            Genero = "M",
+                            Observacao = "Camiseta stampada star wars",
+                            Preco = 60.00m
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Cor = "Preto",
+                            Descricao = "Camiseta Preta Naruto",
+                            Genero = "M",
+                            Observacao = "Camiseta stampada Naruto",
+                            Preco = 55.00m
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Cor = "Vermelho",
+                            Descricao = "Camiseta vermelha",
+                            Genero = "F",
+                            Observacao = "Camiseta lisa vermelha",
+                            Preco = 45.00m
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Cor = "Azul",
+                            Descricao = "Camiseta Azul",
+                            Genero = "F",
+                            Observacao = "Camiseta lisa azul",
+                            Preco = 45.00m
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Cor = "Preto",
+                            Descricao = "Camiseta Preta",
+                            Genero = "F",
+                            Observacao = "Camiseta lisa preta",
+                            Preco = 55.00m
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Cor = "Branco",
+                            Descricao = "Camiseta Branca",
+                            Genero = "F",
+                            Observacao = "Camiseta lisa branca",
+                            Preco = 55.00m
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Cor = "Preta",
+                            Descricao = "Camiseta Preta Star wars",
+                            Genero = "F",
+                            Observacao = "Camiseta stampada star wars",
+                            Preco = 60.00m
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Cor = "Preto",
+                            Descricao = "Camiseta Preta Naruto",
+                            Genero = "F",
+                            Observacao = "Camiseta stampada Naruto",
+                            Preco = 55.00m
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Cor = "Jeans",
+                            Descricao = "Calça jeans",
+                            Genero = "M",
+                            Observacao = "Calça jeans",
+                            Preco = 100.00m
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Cor = "Bege",
+                            Descricao = "Calça jogger",
+                            Genero = "M",
+                            Observacao = "Calça jogger bege",
+                            Preco = 125.00m
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Cor = "Preto",
+                            Descricao = "Calça preta sarja",
+                            Genero = "M",
+                            Observacao = "Calça preta de sarja",
+                            Preco = 110.00m
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Cor = "Cinza",
+                            Descricao = "Bermuda cinza",
+                            Genero = "M",
+                            Observacao = "Bermuda cinza",
+                            Preco = 65.00m
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Cor = "Jeans",
+                            Descricao = "Calça jeans",
+                            Genero = "F",
+                            Observacao = "Calça jeans",
+                            Preco = 100.00m
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Cor = "Bege",
+                            Descricao = "Calça jogger",
+                            Genero = "F",
+                            Observacao = "Calça jogger bege",
+                            Preco = 125.00m
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Cor = "Preto",
+                            Descricao = "Calça preta sarja",
+                            Genero = "F",
+                            Observacao = "Calça preta de sarja",
+                            Preco = 110.00m
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Cor = "Preto",
+                            Descricao = "Vestido Preto",
+                            Genero = "F",
+                            Observacao = "Vestido preto",
+                            Preco = 65.00m
                         });
                 });
 

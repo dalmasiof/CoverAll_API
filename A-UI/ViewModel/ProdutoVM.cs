@@ -7,8 +7,8 @@ namespace CoverAll_API.A_UI.ViewModel
         public decimal Preco  { get; set; }
         public string Cor  { get; set; }
         public string Tamanho { get; set; }
+        public string Personalizado { get; set; }
         public string Observacao { get; set; }
-        public int Quantidade { get; set; }
 
     }
 }

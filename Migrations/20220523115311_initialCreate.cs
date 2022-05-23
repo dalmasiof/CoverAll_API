@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CoverAll_API.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -99,11 +99,12 @@ namespace CoverAll_API.Migrations
                     Preco = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     Cor = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    Genero = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Tamanho = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Observacao = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Quantidade = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
@@ -139,7 +140,7 @@ namespace CoverAll_API.Migrations
             migrationBuilder.InsertData(
                 table: "Clientes",
                 columns: new[] { "Id", "CEP", "CPF", "Cidade", "DataNascimento", "Endereco", "Genero", "Nome", "Sobrenome", "Telefone", "UF", "email" },
-                values: new object[] { 1, "05668545", "447.649.596-66", "São Paulo", new DateTime(1978, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "Rua Pio XII", "Masculino", "Eduardo", "Noah Ramos", "88 3889-3701", "CE", "eduardo_noah_ramos@trimempresas.com.br" });
+                values: new object[] { 1, "05668545", "44764959666", "São Paulo", new DateTime(1978, 5, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "Rua Pio XII", "Masculino", "Eduardo", "Noah Ramos", "88 3889-3701", "CE", "eduardo_noah_ramos@trimempresas.com.br" });
 
             migrationBuilder.InsertData(
                 table: "Logins",
@@ -148,12 +149,29 @@ namespace CoverAll_API.Migrations
 
             migrationBuilder.InsertData(
                 table: "Produtos",
-                columns: new[] { "Id", "Cor", "Descricao", "Observacao", "Preco", "Quantidade", "Tamanho" },
+                columns: new[] { "Id", "Cor", "Descricao", "Genero", "Observacao", "Preco", "Tamanho" },
                 values: new object[,]
                 {
-                    { 1, "Vermelho", "Tecido Vermelho", "", 45.00m, 10, "XG" },
-                    { 2, "Azul", "Tecido Azul Escuro", "", 55.00m, 20, "GG" },
-                    { 3, "Preto", "Camisa manga longa", "Desenvolvido para manter a temperatura corporal", 415.00m, 5, "XXG" }
+                    { 18, "Bege", "Calça jogger", "F", "Calça jogger bege", 125.00m, null },
+                    { 17, "Jeans", "Calça jeans", "F", "Calça jeans", 100.00m, null },
+                    { 16, "Cinza", "Bermuda cinza", "M", "Bermuda cinza", 65.00m, null },
+                    { 15, "Preto", "Calça preta sarja", "M", "Calça preta de sarja", 110.00m, null },
+                    { 14, "Bege", "Calça jogger", "M", "Calça jogger bege", 125.00m, null },
+                    { 13, "Jeans", "Calça jeans", "M", "Calça jeans", 100.00m, null },
+                    { 12, "Preto", "Camiseta Preta Naruto", "F", "Camiseta stampada Naruto", 55.00m, null },
+                    { 11, "Preta", "Camiseta Preta Star wars", "F", "Camiseta stampada star wars", 60.00m, null },
+                    { 10, "Branco", "Camiseta Branca", "F", "Camiseta lisa branca", 55.00m, null },
+                    { 9, "Preto", "Camiseta Preta", "F", "Camiseta lisa preta", 55.00m, null },
+                    { 8, "Azul", "Camiseta Azul", "F", "Camiseta lisa azul", 45.00m, null },
+                    { 7, "Vermelho", "Camiseta vermelha", "F", "Camiseta lisa vermelha", 45.00m, null },
+                    { 6, "Preto", "Camiseta Preta Naruto", "M", "Camiseta stampada Naruto", 55.00m, null },
+                    { 5, "Preta", "Camiseta Preta Star wars", "M", "Camiseta stampada star wars", 60.00m, null },
+                    { 4, "Branco", "Camiseta Branca", "M", "Camiseta lisa branca", 55.00m, null },
+                    { 3, "Preto", "Camiseta Preta", "M", "Camiseta lisa preta", 55.00m, null },
+                    { 2, "Azul", "Camiseta Azul", "M", "Camiseta lisa azul", 45.00m, null },
+                    { 1, "Vermelho", "Camiseta vermelha", "M", "Camiseta lisa vermelha", 45.00m, null },
+                    { 19, "Preto", "Calça preta sarja", "F", "Calça preta de sarja", 110.00m, null },
+                    { 20, "Preto", "Vestido Preto", "F", "Vestido preto", 65.00m, null }
                 });
 
             migrationBuilder.CreateIndex(

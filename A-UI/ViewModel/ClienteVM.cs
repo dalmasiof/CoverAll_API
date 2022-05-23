@@ -16,5 +16,7 @@ namespace CoverAll_API.A_UI.ViewModel
         public string CEP { get; set; }
         public string CPF { get; set; }
         public string Telefone { get; set; }
+        public string Senha { get; set; }
+
     }
 }
