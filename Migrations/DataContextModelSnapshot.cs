@@ -169,6 +169,9 @@ namespace CoverAll_API.Migrations
                     b.Property<string>("Tamanho")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("UrlImg")
+                        .HasColumnType("longtext");
+
                     b.HasKey("Id");
 
                     b.ToTable("Produtos");
@@ -181,7 +184,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Camiseta vermelha",
                             Genero = "M",
                             Observacao = "Camiseta lisa vermelha",
-                            Preco = 45.00m
+                            Preco = 45.00m,
+                            UrlImg = "prod-1.webp"
                         },
                         new
                         {
@@ -190,7 +194,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Camiseta Azul",
                             Genero = "M",
                             Observacao = "Camiseta lisa azul",
-                            Preco = 45.00m
+                            Preco = 45.00m,
+                            UrlImg = "prod-2.jpg"
                         },
                         new
                         {
@@ -199,7 +204,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Camiseta Preta",
                             Genero = "M",
                             Observacao = "Camiseta lisa preta",
-                            Preco = 55.00m
+                            Preco = 55.00m,
+                            UrlImg = "prod-3.webp"
                         },
                         new
                         {
@@ -208,7 +214,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Camiseta Branca",
                             Genero = "M",
                             Observacao = "Camiseta lisa branca",
-                            Preco = 55.00m
+                            Preco = 55.00m,
+                            UrlImg = "prod-4.webp"
                         },
                         new
                         {
@@ -217,7 +224,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Camiseta Preta Star wars",
                             Genero = "M",
                             Observacao = "Camiseta stampada star wars",
-                            Preco = 60.00m
+                            Preco = 60.00m,
+                            UrlImg = "prod-5.jpg"
                         },
                         new
                         {
@@ -226,7 +234,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Camiseta Preta Naruto",
                             Genero = "M",
                             Observacao = "Camiseta stampada Naruto",
-                            Preco = 55.00m
+                            Preco = 55.00m,
+                            UrlImg = "prod-6.webp"
                         },
                         new
                         {
@@ -235,7 +244,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Camiseta vermelha",
                             Genero = "F",
                             Observacao = "Camiseta lisa vermelha",
-                            Preco = 45.00m
+                            Preco = 45.00m,
+                            UrlImg = "prod-7.webp"
                         },
                         new
                         {
@@ -244,7 +254,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Camiseta Azul",
                             Genero = "F",
                             Observacao = "Camiseta lisa azul",
-                            Preco = 45.00m
+                            Preco = 45.00m,
+                            UrlImg = "prod-8.jpg"
                         },
                         new
                         {
@@ -253,7 +264,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Camiseta Preta",
                             Genero = "F",
                             Observacao = "Camiseta lisa preta",
-                            Preco = 55.00m
+                            Preco = 55.00m,
+                            UrlImg = "prod-9.webp"
                         },
                         new
                         {
@@ -262,7 +274,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Camiseta Branca",
                             Genero = "F",
                             Observacao = "Camiseta lisa branca",
-                            Preco = 55.00m
+                            Preco = 55.00m,
+                            UrlImg = "prod-10.webp"
                         },
                         new
                         {
@@ -271,7 +284,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Camiseta Preta Star wars",
                             Genero = "F",
                             Observacao = "Camiseta stampada star wars",
-                            Preco = 60.00m
+                            Preco = 60.00m,
+                            UrlImg = "prod-11.webp"
                         },
                         new
                         {
@@ -280,7 +294,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Camiseta Preta Naruto",
                             Genero = "F",
                             Observacao = "Camiseta stampada Naruto",
-                            Preco = 55.00m
+                            Preco = 55.00m,
+                            UrlImg = "prod-12.webp"
                         },
                         new
                         {
@@ -289,7 +304,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Calça jeans",
                             Genero = "M",
                             Observacao = "Calça jeans",
-                            Preco = 100.00m
+                            Preco = 100.00m,
+                            UrlImg = "prod-13.webp"
                         },
                         new
                         {
@@ -298,7 +314,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Calça jogger",
                             Genero = "M",
                             Observacao = "Calça jogger bege",
-                            Preco = 125.00m
+                            Preco = 125.00m,
+                            UrlImg = "prod-14.jfif"
                         },
                         new
                         {
@@ -307,7 +324,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Calça preta sarja",
                             Genero = "M",
                             Observacao = "Calça preta de sarja",
-                            Preco = 110.00m
+                            Preco = 110.00m,
+                            UrlImg = "prod-15.jfif"
                         },
                         new
                         {
@@ -316,7 +334,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Bermuda cinza",
                             Genero = "M",
                             Observacao = "Bermuda cinza",
-                            Preco = 65.00m
+                            Preco = 65.00m,
+                            UrlImg = "prod-16.webp"
                         },
                         new
                         {
@@ -325,7 +344,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Calça jeans",
                             Genero = "F",
                             Observacao = "Calça jeans",
-                            Preco = 100.00m
+                            Preco = 100.00m,
+                            UrlImg = "prod-17.jpg"
                         },
                         new
                         {
@@ -334,7 +354,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Calça jogger",
                             Genero = "F",
                             Observacao = "Calça jogger bege",
-                            Preco = 125.00m
+                            Preco = 125.00m,
+                            UrlImg = "prod-18.webp"
                         },
                         new
                         {
@@ -343,7 +364,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Calça preta sarja",
                             Genero = "F",
                             Observacao = "Calça preta de sarja",
-                            Preco = 110.00m
+                            Preco = 110.00m,
+                            UrlImg = "prod-19.webp"
                         },
                         new
                         {
@@ -352,7 +374,8 @@ namespace CoverAll_API.Migrations
                             Descricao = "Vestido Preto",
                             Genero = "F",
                             Observacao = "Vestido preto",
-                            Preco = 65.00m
+                            Preco = 65.00m,
+                            UrlImg = "prod-20.webp"
                         });
                 });
 

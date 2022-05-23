@@ -11,6 +11,7 @@ namespace CoverAll_API.C_DAL.Model
         public string Genero { get; set; }
         public string Tamanho { get; set; }
         public string Observacao { get; set; }
+        public string UrlImg { get; set; }
         public ICollection<Pedido> Pedidos { get; set; }
 
     }

@@ -104,6 +104,8 @@ namespace CoverAll_API.Migrations
                     Tamanho = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Observacao = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    UrlImg = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -149,29 +151,29 @@ namespace CoverAll_API.Migrations
 
             migrationBuilder.InsertData(
                 table: "Produtos",
-                columns: new[] { "Id", "Cor", "Descricao", "Genero", "Observacao", "Preco", "Tamanho" },
+                columns: new[] { "Id", "Cor", "Descricao", "Genero", "Observacao", "Preco", "Tamanho", "UrlImg" },
                 values: new object[,]
                 {
-                    { 18, "Bege", "Calça jogger", "F", "Calça jogger bege", 125.00m, null },
-                    { 17, "Jeans", "Calça jeans", "F", "Calça jeans", 100.00m, null },
-                    { 16, "Cinza", "Bermuda cinza", "M", "Bermuda cinza", 65.00m, null },
-                    { 15, "Preto", "Calça preta sarja", "M", "Calça preta de sarja", 110.00m, null },
-                    { 14, "Bege", "Calça jogger", "M", "Calça jogger bege", 125.00m, null },
-                    { 13, "Jeans", "Calça jeans", "M", "Calça jeans", 100.00m, null },
-                    { 12, "Preto", "Camiseta Preta Naruto", "F", "Camiseta stampada Naruto", 55.00m, null },
-                    { 11, "Preta", "Camiseta Preta Star wars", "F", "Camiseta stampada star wars", 60.00m, null },
-                    { 10, "Branco", "Camiseta Branca", "F", "Camiseta lisa branca", 55.00m, null },
-                    { 9, "Preto", "Camiseta Preta", "F", "Camiseta lisa preta", 55.00m, null },
-                    { 8, "Azul", "Camiseta Azul", "F", "Camiseta lisa azul", 45.00m, null },
-                    { 7, "Vermelho", "Camiseta vermelha", "F", "Camiseta lisa vermelha", 45.00m, null },
-                    { 6, "Preto", "Camiseta Preta Naruto", "M", "Camiseta stampada Naruto", 55.00m, null },
-                    { 5, "Preta", "Camiseta Preta Star wars", "M", "Camiseta stampada star wars", 60.00m, null },
-                    { 4, "Branco", "Camiseta Branca", "M", "Camiseta lisa branca", 55.00m, null },
-                    { 3, "Preto", "Camiseta Preta", "M", "Camiseta lisa preta", 55.00m, null },
-                    { 2, "Azul", "Camiseta Azul", "M", "Camiseta lisa azul", 45.00m, null },
-                    { 1, "Vermelho", "Camiseta vermelha", "M", "Camiseta lisa vermelha", 45.00m, null },
-                    { 19, "Preto", "Calça preta sarja", "F", "Calça preta de sarja", 110.00m, null },
-                    { 20, "Preto", "Vestido Preto", "F", "Vestido preto", 65.00m, null }
+                    { 18, "Bege", "Calça jogger", "F", "Calça jogger bege", 125.00m, null, "prod-18.webp" },
+                    { 17, "Jeans", "Calça jeans", "F", "Calça jeans", 100.00m, null, "prod-17.jpg" },
+                    { 16, "Cinza", "Bermuda cinza", "M", "Bermuda cinza", 65.00m, null, "prod-16.webp" },
+                    { 15, "Preto", "Calça preta sarja", "M", "Calça preta de sarja", 110.00m, null, "prod-15.jfif" },
+                    { 14, "Bege", "Calça jogger", "M", "Calça jogger bege", 125.00m, null, "prod-14.jfif" },
+                    { 13, "Jeans", "Calça jeans", "M", "Calça jeans", 100.00m, null, "prod-13.webp" },
+                    { 12, "Preto", "Camiseta Preta Naruto", "F", "Camiseta stampada Naruto", 55.00m, null, "prod-12.webp" },
+                    { 11, "Preta", "Camiseta Preta Star wars", "F", "Camiseta stampada star wars", 60.00m, null, "prod-11.webp" },
+                    { 10, "Branco", "Camiseta Branca", "F", "Camiseta lisa branca", 55.00m, null, "prod-10.webp" },
+                    { 9, "Preto", "Camiseta Preta", "F", "Camiseta lisa preta", 55.00m, null, "prod-9.webp" },
+                    { 8, "Azul", "Camiseta Azul", "F", "Camiseta lisa azul", 45.00m, null, "prod-8.jpg" },
+                    { 7, "Vermelho", "Camiseta vermelha", "F", "Camiseta lisa vermelha", 45.00m, null, "prod-7.webp" },
+                    { 6, "Preto", "Camiseta Preta Naruto", "M", "Camiseta stampada Naruto", 55.00m, null, "prod-6.webp" },
+                    { 5, "Preta", "Camiseta Preta Star wars", "M", "Camiseta stampada star wars", 60.00m, null, "prod-5.jpg" },
+                    { 4, "Branco", "Camiseta Branca", "M", "Camiseta lisa branca", 55.00m, null, "prod-4.webp" },
+                    { 3, "Preto", "Camiseta Preta", "M", "Camiseta lisa preta", 55.00m, null, "prod-3.webp" },
+                    { 2, "Azul", "Camiseta Azul", "M", "Camiseta lisa azul", 45.00m, null, "prod-2.jpg" },
+                    { 1, "Vermelho", "Camiseta vermelha", "M", "Camiseta lisa vermelha", 45.00m, null, "prod-1.webp" },
+                    { 19, "Preto", "Calça preta sarja", "F", "Calça preta de sarja", 110.00m, null, "prod-19.webp" },
+                    { 20, "Preto", "Vestido Preto", "F", "Vestido preto", 65.00m, null, "prod-20.webp" }
                 });
 
             migrationBuilder.CreateIndex(
