@@ -15,6 +15,7 @@ namespace CoverAll_API.A_UI.ViewModel
         public string StatusPagamento { get; set; }
         public string StatusEntrega { get; set; }
         public string Tamanho { get; set; }
+        public string EnderecoEntrega { get; set; }
 
 
         public ICollection<ProdutoVM> Produtos { get; set; }

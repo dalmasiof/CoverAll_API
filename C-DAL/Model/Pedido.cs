@@ -15,6 +15,7 @@ namespace CoverAll_API.C_DAL.Model
         public string StatusPagamento { get; set; }
         public string StatusEntrega { get; set; }
         public string Tamanho { get; set; }
+        public string EnderecoEntrega { get; set; }
 
 
         public ICollection<Produto> Produtos { get; set; }
