@@ -10,6 +10,6 @@ namespace CoverAll_API.C_DAL.Model
         public int PedidoId { get; set; }
         public Pedido Pedido { get; set; }
 
-        public string Tamanho => Produto.Tamanho;
+        
     }
 }
