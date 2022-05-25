@@ -43,13 +43,9 @@ namespace CoverAll_API
 
             services.AddDbContext<DataContext>(x =>
              {
-                 var local = Configuration.GetValue<string>("ASPNETCORE_ENVIRONMENT");
-                 Console.Write(local);
-                 Console.WriteLine("-------------Var Local-------------\n" + local);
                  string connStr;
                  connStr = Configuration.GetConnectionString("sqlConnection");
 
-                 Console.WriteLine("-------------Var COnString-------------\n" + connStr);
                  x.UseMySql(connStr, new MySqlServerVersion(new Version(5, 0, 0)));
 
              });
