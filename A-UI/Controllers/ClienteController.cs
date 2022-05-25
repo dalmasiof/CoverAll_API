@@ -79,5 +79,14 @@ namespace CoverAll_API.Controllers
 
             return Ok(ClienteVM);
         }
+
+        [HttpGet("{Id:int}")]
+        public ActionResult GetPedidosPorCliente(int Id)
+        {
+            var Pedido = this.clienteService.GetPedidosPorCliente(Id);
+            var PedidoVM = this.mapper.Map<ICollection<Pedido>, ICollection<PedidoVM>>(Pedido);
+
+            return Ok(PedidoVM);
+        }
     }
 }

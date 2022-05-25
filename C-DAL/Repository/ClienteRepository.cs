@@ -38,5 +38,10 @@ namespace CoverAll_API.C_DAL.Repository
         {
             this.dbContext.Clientes.Update(entity);
         }
+
+        public ICollection<Pedido> GetPedidosPorCliente(int IdCliente)
+        {
+            return this.dbContext.Pedidos.Where(x=>x.IdCliente == IdCliente).ToList();
+        }
     }
 }

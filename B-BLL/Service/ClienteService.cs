@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using CoverAll_API.B_BLL.Interfaces;
 using CoverAll_API.C_DAL.Interfaces;
-using CoverAll_API.C_DAL.Interfaces;
 using CoverAll_API.C_DAL.Model;
 
 namespace CoverAll_API.B_BLL.Service
@@ -57,6 +56,11 @@ namespace CoverAll_API.B_BLL.Service
         public void Update(Cliente entity)
         {
             repository.Update(entity);
+        }
+
+         public ICollection<Pedido> GetPedidosPorCliente(int IdCliente)
+        {
+            return this.repository.GetPedidosPorCliente(IdCliente);
         }
     }
 }
