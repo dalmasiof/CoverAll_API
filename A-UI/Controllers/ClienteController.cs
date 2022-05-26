@@ -80,7 +80,7 @@ namespace CoverAll_API.Controllers
             return Ok(ClienteVM);
         }
 
-        [HttpGet("{Id:int}")]
+        [HttpGet("GetPedidosPorCliente/{Id:int}")]
         public ActionResult GetPedidosPorCliente(int Id)
         {
             var Pedido = this.clienteService.GetPedidosPorCliente(Id);
