@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoverAll_API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220524145933_ajustePedidoAddEndEntrega")]
-    partial class ajustePedidoAddEndEntrega
+    [Migration("20220526145518_initialCreate")]
+    partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -125,9 +125,6 @@ namespace CoverAll_API.Migrations
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<int>("IdCliente")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdProdutoCliente")
                         .HasColumnType("int");
 
                     b.Property<string>("StatusEntrega")

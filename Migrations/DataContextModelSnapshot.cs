@@ -125,9 +125,6 @@ namespace CoverAll_API.Migrations
                     b.Property<int>("IdCliente")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdProdutoCliente")
-                        .HasColumnType("int");
-
                     b.Property<string>("StatusEntrega")
                         .HasColumnType("longtext");
 

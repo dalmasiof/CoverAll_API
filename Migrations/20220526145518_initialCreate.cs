@@ -70,7 +70,6 @@ namespace CoverAll_API.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IdCliente = table.Column<int>(type: "int", nullable: false),
-                    IdProdutoCliente = table.Column<int>(type: "int", nullable: false),
                     Total = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     Desconto = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     Frete = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
@@ -80,6 +79,10 @@ namespace CoverAll_API.Migrations
                     StatusPagamento = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     StatusEntrega = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Tamanho = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    EnderecoEntrega = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
