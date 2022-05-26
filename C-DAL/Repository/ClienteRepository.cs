@@ -4,6 +4,7 @@ using System.Linq;
 using CoverAll_API.C_DAL.Config;
 using CoverAll_API.C_DAL.Interfaces;
 using CoverAll_API.C_DAL.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoverAll_API.C_DAL.Repository
 {
@@ -41,7 +42,7 @@ namespace CoverAll_API.C_DAL.Repository
 
         public ICollection<Pedido> GetPedidosPorCliente(int IdCliente)
         {
-            return this.dbContext.Pedidos.Where(x=>x.IdCliente == IdCliente).ToList();
+            return this.dbContext.Pedidos.Include("Produtos").Where(x=>x.IdCliente == IdCliente).ToList();
         }
     }
 }
