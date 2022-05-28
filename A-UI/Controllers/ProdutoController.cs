@@ -8,11 +8,14 @@ using CoverAll_API.C_DAL.Model;
 using CoverAll_API.B_Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Cors;
 
 namespace CoverAll_API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [EnableCors("AllowOrigin")]
+
     public class ProdutoController : ControllerBase
     {
 
@@ -32,33 +35,33 @@ namespace CoverAll_API.Controllers
         {
             var ProdListBD = this.produtoService.GetList().ToList();
 
-            var ProdListVM = this.mapper.Map<List<Produto>,List<ProdutoVM>>(ProdListBD);
+            var ProdListVM = this.mapper.Map<List<Produto>, List<ProdutoVM>>(ProdListBD);
             return Ok(ProdListVM);
         }
 
         [HttpPut]
         public ActionResult Put(ProdutoVM produto)
         {
-            var ProdutoModel = this.mapper.Map<ProdutoVM,Produto>(produto);
+            var ProdutoModel = this.mapper.Map<ProdutoVM, Produto>(produto);
 
             this.produtoService.Update(ProdutoModel);
             if (this.produtoService.SaveChanges())
-                return Ok("Alterou");
+                return Ok();
 
-            return Ok("Nao Alterou");
+            return Ok();
         }
 
         [HttpPost]
         public ActionResult Post(ProdutoVM produto)
         {
-              
-            var ProdutoModel = this.mapper.Map<ProdutoVM,Produto>(produto);
+//
+            var ProdutoModel = this.mapper.Map<ProdutoVM, Produto>(produto);
 
             this.produtoService.Add(ProdutoModel);
             if (this.produtoService.SaveChanges())
-                return Ok("Gravou");
+                return Ok();
 
-            return Ok("Nao Gravou");
+            return Ok();
         }
 
         [HttpDelete("{Id:int}")]
@@ -67,9 +70,9 @@ namespace CoverAll_API.Controllers
             var Produto = this.produtoService.GetList().Where(x => x.Id == Id).FirstOrDefault();
             this.produtoService.Delete(Produto);
             if (this.produtoService.SaveChanges())
-                return Ok("Deletou");
+                return Ok();
 
-            return Ok("Nao Deletou");
+            return Ok();
         }
     }
 }

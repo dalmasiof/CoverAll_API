@@ -6,6 +6,7 @@ using AutoMapper;
 using CoverAll_API.A_UI.ViewModel;
 using CoverAll_API.B_BLL.Interfaces;
 using CoverAll_API.C_DAL.Model;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -13,59 +14,61 @@ namespace CoverAll_API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [EnableCors("AllowOrigin")]
+
     public class PedidoController : ControllerBase
     {
         private readonly IPedidoService service;
         private readonly IMapper mapper;
 
-        public PedidoController(IPedidoService service, IMapper mapper )
+        public PedidoController(IPedidoService service, IMapper mapper)
         {
             this.service = service;
             this.mapper = mapper;
         }
 
-      
+
         [HttpGet]
         public ActionResult Get()
         {
-              var ProdListBD = this.service.GetList().ToList();
+            var ProdListBD = this.service.GetList().ToList();
 
-            var ProdListVM = this.mapper.Map<List<Pedido>,List<PedidoVM>>(ProdListBD);
+            var ProdListVM = this.mapper.Map<List<Pedido>, List<PedidoVM>>(ProdListBD);
             return Ok(ProdListVM);
         }
 
         [HttpPut]
         public ActionResult Put(PedidoVM pedidoVM)
         {
-            var PedidoModel = this.mapper.Map<PedidoVM,Pedido>(pedidoVM);
+            var PedidoModel = this.mapper.Map<PedidoVM, Pedido>(pedidoVM);
 
             this.service.Update(PedidoModel);
             if (this.service.SaveChanges())
-                return Ok("Alterou");
+                return Ok();
 
-            return Ok("Nao Alterou");
+            return Ok();
         }
 
         [HttpPost]
         public ActionResult Post(PedidoVM pedidoVM)
         {
-            var PedidoModel = this.mapper.Map<PedidoVM,Pedido>(pedidoVM);
+            var PedidoModel = this.mapper.Map<PedidoVM, Pedido>(pedidoVM);
             this.service.Add(PedidoModel);
             if (this.service.SaveChanges())
-                return Ok("Gravou");
+                return Ok();
 
-            return Ok("Nao Gravou");
+            return Ok();
         }
 
         [HttpDelete("{Id:int}")]
         public ActionResult Delete(int Id)
         {
-             var Pedido = this.service.GetList().Where(x => x.Id == Id).FirstOrDefault();
+            var Pedido = this.service.GetList().Where(x => x.Id == Id).FirstOrDefault();
             this.service.Delete(Pedido);
             if (this.service.SaveChanges())
-                return Ok("Deletou");
+                return Ok();
 
-            return Ok("Nao Deletou");
+            return Ok();
         }
     }
 }

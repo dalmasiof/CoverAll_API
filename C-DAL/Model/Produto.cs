@@ -8,10 +8,10 @@ namespace CoverAll_API.C_DAL.Model
         public string Descricao { get; set; }
         public decimal Preco { get; set; }
         public string Cor { get; set; }
+        public string Genero { get; set; }
         public string Tamanho { get; set; }
         public string Observacao { get; set; }
-        public int Quantidade { get; set; }
-
+        public string UrlImg { get; set; }
         public ICollection<Pedido> Pedidos { get; set; }
 
     }

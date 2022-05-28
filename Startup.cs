@@ -30,23 +30,22 @@ namespace CoverAll_API
         public void ConfigureServices(IServiceCollection services)
         {
 
-
-            //     services.AddDbContext<DataContext>(
-            //        ctx =>
-            //        {
-            //            ctx.UseSqlite("Data Source=DataBase.db");
-            //        }
-            //    );
+            //add cors
+            services.AddCors(c =>
+              {
+                  c.AddPolicy("AllowOrigin", options =>
+                  {
+                      options.AllowAnyOrigin().
+                      AllowAnyMethod().
+                      AllowAnyHeader();
+                  });
+              });
 
             services.AddDbContext<DataContext>(x =>
              {
-                 var local = Configuration.GetValue<string>("ASPNETCORE_ENVIRONMENT");
-                 Console.Write(local);
-                 Console.WriteLine("-------------Var Local-------------\n" + local);
                  string connStr;
-                     connStr = Configuration.GetConnectionString("sqlConnection");
-            
-                 Console.WriteLine("-------------Var COnString-------------\n" + connStr);
+                 connStr = Configuration.GetConnectionString("sqlConnection");
+
                  x.UseMySql(connStr, new MySqlServerVersion(new Version(5, 0, 0)));
 
              });
@@ -82,6 +81,8 @@ namespace CoverAll_API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 

@@ -13,8 +13,10 @@ namespace CoverAll_API.A_UI.Config
             
             CreateMap<ProdutoVM,Produto>().ReverseMap();
             CreateMap<ClienteVM,Cliente>().ReverseMap();
+            CreateMap<Cliente,ClienteListaVM>().ReverseMap();
             CreateMap<PedidoVM,Pedido>().ReverseMap();
             CreateMap<LoginVM,Login>().ReverseMap();
+            
 
         }
     }

@@ -26,7 +26,7 @@ namespace CoverAll_API.B_BLL.Service
 
         public void Delete(Login entity)
         {
-            throw new NotImplementedException();
+            this.repository.Delete(entity);
         }
 
         public ICollection<Login> GetList()
@@ -39,7 +39,7 @@ namespace CoverAll_API.B_BLL.Service
             var login = this.repository.LogIn(usuario, senha);
             if (login != null)
             {
-                var cliente = this.repositoryCliente.GetList().Where(x => x.Id == login.Id).FirstOrDefault();
+                var cliente = this.repositoryCliente.GetList().Where(x => x.Id == login.IdCLiente).FirstOrDefault();
 
                 return cliente;
             }
