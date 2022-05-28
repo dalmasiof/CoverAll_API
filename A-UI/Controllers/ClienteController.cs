@@ -86,7 +86,7 @@ namespace CoverAll_API.Controllers
             var Pedido = this.clienteService.GetPedidosPorCliente(Id);
             var PedidoVM = this.mapper.Map<ICollection<Pedido>, ICollection<PedidoVM>>(Pedido);
 
-            return Ok(PedidoVM);
+            return Ok(PedidoVM.OrderByDescending(x=>x.Id));
         }
     }
 }
