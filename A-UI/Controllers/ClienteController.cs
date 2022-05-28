@@ -55,7 +55,7 @@ namespace CoverAll_API.Controllers
 
             this.clienteService.Add(ClienteModel);
             if (this.clienteService.SaveChanges())
-                return Ok();
+                return Ok(this.mapper.Map<Cliente,ClienteVM>(ClienteModel));
 
             return Ok();
         }
