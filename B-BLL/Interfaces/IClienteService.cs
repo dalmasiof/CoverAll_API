@@ -5,9 +5,9 @@ using CoverAll_API.C_DAL.Model;
 
 namespace CoverAll_API.B_BLL.Interfaces
 {
-    public interface IClienteService:IBaseService<Cliente>
+    public interface IClienteService : IBaseService<Cliente>
     {
-                ICollection<Pedido> GetPedidosPorCliente(int IdCLiente);
-
+        ICollection<Pedido> GetPedidosPorCliente(int IdCLiente);
+        Cliente Create(Cliente clienteModel, string senha);
     }
 }

@@ -12,7 +12,7 @@ namespace CoverAll_API.B_BLL.Service
         private readonly IClienteRepository repository;
         private readonly ILoginRepository repositoryLogin;
 
-        public ClienteService(IClienteRepository repository,ILoginRepository repositoryLogin)
+        public ClienteService(IClienteRepository repository, ILoginRepository repositoryLogin)
         {
             this.repository = repository;
             this.repositoryLogin = repositoryLogin;
@@ -23,11 +23,12 @@ namespace CoverAll_API.B_BLL.Service
         {
             repository.Add(entity);
             repository.SaveChanges();
-            var objLogin = new Login(){
-                Id=0,
-                IdCLiente=entity.Id,
-                Senha="admin",
-                Usuario=entity.email
+            var objLogin = new Login()
+            {
+                Id = 0,
+                IdCLiente = entity.Id,
+                Senha = "admin",
+                Usuario = entity.email
             };
             repositoryLogin.Add(objLogin);
 
@@ -36,7 +37,7 @@ namespace CoverAll_API.B_BLL.Service
         public void Delete(Cliente entity)
         {
 
-            var loginToDelete = this.repositoryLogin.GetList().Where(x=>x.IdCLiente == entity.Id).FirstOrDefault();
+            var loginToDelete = this.repositoryLogin.GetList().Where(x => x.IdCLiente == entity.Id).FirstOrDefault();
 
             repository.Delete(entity);
             repository.SaveChanges();
@@ -58,9 +59,25 @@ namespace CoverAll_API.B_BLL.Service
             repository.Update(entity);
         }
 
-         public ICollection<Pedido> GetPedidosPorCliente(int IdCliente)
+        public ICollection<Pedido> GetPedidosPorCliente(int IdCliente)
         {
             return this.repository.GetPedidosPorCliente(IdCliente);
+        }
+
+        public Cliente Create(Cliente clienteModel, string senha)
+        {
+
+            repository.Add(clienteModel);
+            repository.SaveChanges();
+            var objLogin = new Login()
+            {
+                Id = 0,
+                IdCLiente = clienteModel.Id,
+                Senha = senha,
+                Usuario = clienteModel.email
+            };
+            repositoryLogin.Add(objLogin);
+            return clienteModel;
         }
     }
 }

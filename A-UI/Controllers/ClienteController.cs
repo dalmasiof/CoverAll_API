@@ -53,7 +53,7 @@ namespace CoverAll_API.Controllers
 
             var ClienteModel = this.mapper.Map<ClienteVM, Cliente>(clienteVM);
 
-            this.clienteService.Add(ClienteModel);
+            this.clienteService.Create(ClienteModel,clienteVM.Senha);
             if (this.clienteService.SaveChanges())
                 return Ok(this.mapper.Map<Cliente,ClienteVM>(ClienteModel));
 
