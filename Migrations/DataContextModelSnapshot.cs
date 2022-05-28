@@ -114,13 +114,15 @@ namespace CoverAll_API.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Desconto")
-                        .HasColumnType("decimal(65,30)");
+                        .HasPrecision(5, 2)
+                        .HasColumnType("decimal(5,2)");
 
                     b.Property<string>("EnderecoEntrega")
                         .HasColumnType("longtext");
 
                     b.Property<decimal>("Frete")
-                        .HasColumnType("decimal(65,30)");
+                        .HasPrecision(5, 2)
+                        .HasColumnType("decimal(5,2)");
 
                     b.Property<int>("IdCliente")
                         .HasColumnType("int");
@@ -138,10 +140,12 @@ namespace CoverAll_API.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<decimal>("Total")
-                        .HasColumnType("decimal(65,30)");
+                        .HasPrecision(5, 2)
+                        .HasColumnType("decimal(5,2)");
 
                     b.Property<decimal>("TotalAPagar")
-                        .HasColumnType("decimal(65,30)");
+                        .HasPrecision(5, 2)
+                        .HasColumnType("decimal(5,2)");
 
                     b.HasKey("Id");
 
@@ -167,7 +171,8 @@ namespace CoverAll_API.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<decimal>("Preco")
-                        .HasColumnType("decimal(65,30)");
+                        .HasPrecision(5, 2)
+                        .HasColumnType("decimal(5,2)");
 
                     b.Property<string>("Tamanho")
                         .HasColumnType("longtext");

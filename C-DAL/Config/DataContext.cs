@@ -7,7 +7,7 @@ namespace CoverAll_API.C_DAL.Config
     {
         public DataContext()
         {
-            
+
         }
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
@@ -15,6 +15,23 @@ namespace CoverAll_API.C_DAL.Config
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Cliente>().Property(x => x.Id)
+            .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Login>().Property(x => x.Id)
+            .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Produto>().Property(x => x.Id)
+            .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Pedido>().Property(x => x.Id)
+             .ValueGeneratedOnAdd();
+          
+
+
+            modelBuilder.Entity<Produto>().Property(x => x.Preco).HasPrecision(5, 2);
+            modelBuilder.Entity<Pedido>().Property(x => x.Frete).HasPrecision(5, 2);
+            modelBuilder.Entity<Pedido>().Property(x => x.Total).HasPrecision(5, 2);
+            modelBuilder.Entity<Pedido>().Property(x => x.TotalAPagar).HasPrecision(5, 2);
+            modelBuilder.Entity<Pedido>().Property(x => x.Desconto).HasPrecision(5, 2);
+
             var Produtos = new Produto[]{
             new Produto{Cor="Vermelho",Descricao="Camiseta vermelha",Id=1,Observacao="Camiseta lisa vermelha",Preco=45.00M,Genero="M",UrlImg="prod-1.webp"},
             new Produto{Cor="Azul",Descricao="Camiseta Azul",Id=2,Observacao="Camiseta lisa azul",Preco=45.00M,Genero="M",UrlImg="prod-2.jpg"},
@@ -39,7 +56,7 @@ namespace CoverAll_API.C_DAL.Config
             new Produto{Cor="Bege",Descricao="Calça jogger",Id=18,Observacao="Calça jogger bege",Preco=125.00M,Genero="F",UrlImg="prod-18.webp"},
             new Produto{Cor="Preto",Descricao="Calça preta sarja",Id=19,Observacao="Calça preta de sarja",Preco=110.00M,Genero="F",UrlImg="prod-19.webp"},
             new Produto{Cor="Preto",Descricao="Vestido Preto",Id=20,Observacao="Vestido preto",Preco=65.00M,Genero="F",UrlImg="prod-20.webp"},
-            
+
 
             };
 

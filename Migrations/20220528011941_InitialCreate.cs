@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CoverAll_API.Migrations
 {
-    public partial class initialCreate : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -70,10 +70,10 @@ namespace CoverAll_API.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IdCliente = table.Column<int>(type: "int", nullable: false),
-                    Total = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
-                    Desconto = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
-                    Frete = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
-                    TotalAPagar = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    Total = table.Column<decimal>(type: "decimal(5,2)", precision: 5, scale: 2, nullable: false),
+                    Desconto = table.Column<decimal>(type: "decimal(5,2)", precision: 5, scale: 2, nullable: false),
+                    Frete = table.Column<decimal>(type: "decimal(5,2)", precision: 5, scale: 2, nullable: false),
+                    TotalAPagar = table.Column<decimal>(type: "decimal(5,2)", precision: 5, scale: 2, nullable: false),
                     StatusPedido = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     StatusPagamento = table.Column<string>(type: "longtext", nullable: true)
@@ -99,7 +99,7 @@ namespace CoverAll_API.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Descricao = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Preco = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    Preco = table.Column<decimal>(type: "decimal(5,2)", precision: 5, scale: 2, nullable: false),
                     Cor = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Genero = table.Column<string>(type: "longtext", nullable: true)
