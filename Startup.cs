@@ -50,6 +50,7 @@ namespace CoverAll_API
                  //x.UseMySql(connStr, new MySqlServerVersion(new Version(5, 0, 0)));
 
                  //x.UseInMemoryDatabase("");
+                 //teste build
                  x.UseSqlite(connStr);
 
              });
