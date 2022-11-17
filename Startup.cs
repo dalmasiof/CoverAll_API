@@ -44,13 +44,13 @@ namespace CoverAll_API
             services.AddDbContext<DataContext>(x =>
              {
                  string connStr;
-                 //connStr = Configuration.GetConnectionString("sqlConnection");
-                 connStr = Configuration.GetConnectionString("sqLiteCon");
+                 connStr = Configuration.GetConnectionString("sqlConnection");
+                 //connStr = Configuration.GetConnectionString("sqLiteCon");
 
-                 //x.UseMySql(connStr, new MySqlServerVersion(new Version(5, 0, 0)));
+                 x.UseMySql(connStr, new MySqlServerVersion(new Version(5, 0, 0)));
 
                  //x.UseInMemoryDatabase("");
-                 x.UseSqlite(connStr);
+                 //x.UseSqlite(connStr);
 
              });
 
